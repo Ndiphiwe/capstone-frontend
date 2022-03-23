@@ -14,7 +14,7 @@
             <p>{{blogPost.description}}</p>
             </div>
             <div v-else>
-                <p><i class='bx bx-loader bx-sm bx-spin'></i> Loading project details...</p>
+                <p><i class='bx bx-loader bx-sm bx-spin' style="color: #fd1c1c;"></i>   Loading post details...</p>
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 *{
     color: #fff;
 }

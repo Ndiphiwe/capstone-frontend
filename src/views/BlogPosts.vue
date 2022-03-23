@@ -4,8 +4,8 @@
     <h1 class="text-light py-5">BLOG POSTS</h1>
     <div class="container">
 
-          <div v-if="blogPosts">
-            <div class="blog-card" v-for="blogPost of blogPosts" :key="blogPost._id">
+          <div v-if="blogPosts.length">
+            <div class="blog-card" v-for="blogPost in blogPosts" :key="blogPost._id">
               <div class="meta">
                 <div class="photo">
                   <img :src="blogPost.img" alt="">
@@ -26,7 +26,7 @@
               <div class="description">
                 <h1>{{blogPost.title}}</h1>
                 <h2>{{blogPost.category}}</h2>
-                <p class="para">{{blogPost.description}}</p>
+                <p class="para">{{blogPost.description.substring(0, 290)}}...</p>
                 <p class="read-more">
                 <router-link :to="{name: 'PostDetails', params: {id: blogPost._id}}">
                   Read More
@@ -35,8 +35,8 @@
               </div>
           </div>
         </div>
-        <div v-else>
-          <p  style="color: #fff;"><i class='bx bx-loader bx-sm bx-spin'></i>  Loading Blog Posts...</p>
+        <div v-else class="loader">
+          <p><i class='bx bx-loader bx-sm bx-spin' style="color: #fd1c1c;"></i>  Loading Blog Posts...</p>
         </div>
       </div>
   </div>
@@ -73,6 +73,9 @@ export default {
   .container{
     padding-bottom: 10vh;
   }
+.loader{
+  color: #fff;
+}
 
 /*PEN STYLES*/
 * {

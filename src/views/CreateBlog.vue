@@ -11,7 +11,7 @@
                 <p><input type="text" v-model="title" placeholder="Title" required></p>
                 <p><input type="text" v-model="category" placeholder="Category" required></p>
                 <p><input type="text" v-model="img" placeholder="Image URL" required></p>
-                <p><input type="text" v-model="description" placeholder="Description" required></p>
+                <p><textarea type="text" v-model="description" placeholder="Description" required></textarea></p>
                 <p><input type="text" v-model="author" placeholder="Author" required></p>
                 <p><input type="submit" value="Add Blog Post"></p>
             </form>
@@ -29,6 +29,7 @@ export default {
     return {
       title: "",
       category: "",
+      img: "",
       description: "",
       author: "",
     };
@@ -137,6 +138,9 @@ export default {
   .about h1{
     font: 300 60px 'Oswald', sans-serif;
   }
+  .about{
+    height:100vh;
+  }
 
 /* Reset top and bottom margins from certain elements */
 .login-header,
@@ -174,7 +178,7 @@ export default {
   padding: 12px;
 }
 
-.login input {
+.login input, textarea {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -188,7 +192,8 @@ export default {
 
 .login input[type="text"],
 .login input[type="email"],
-.login input[type="password"] {
+.login input[type="password"],
+textarea {
   background: #000;
   border-color: #bbb;
   color: #fff;

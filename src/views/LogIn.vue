@@ -46,7 +46,7 @@ export default {
           localStorage.setItem("jwt", json.jwt);
           alert("User logged in");
           console.log(this.email, this.password)
-          this.$router.push({ name: "Profile" });
+          this.$router.push({ name: "Blog-cart" });
         })
         .catch((err) => {
           alert(err);
