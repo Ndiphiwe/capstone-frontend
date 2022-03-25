@@ -33,11 +33,7 @@ export default {
   },
   methods: {
     register() {
-      if (!localStorage.getItem("jwt")) {
-        alert("User not logged in");
-        return this.$router.push({ name: "Login" });
-      }
-      fetch("https://ndiphiwe-captone-project.herokuapp.com//users/signup", {
+      fetch("https://ndiphiwe-captone-project.herokuapp.com/users/signup", {
         method: "POST",
         body: JSON.stringify({
           name: this.name,
@@ -52,7 +48,7 @@ export default {
         .then((json) => {
           alert("User registered");
           localStorage.setItem("jwt", json.jwt);
-          this.$router.push({ name: "SignUp" });
+          this.$router.push({ name: "LogIn" });
         })
         .catch((err) => {
           alert(err);

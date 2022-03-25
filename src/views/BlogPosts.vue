@@ -5,6 +5,15 @@
     <div class="container">
 
           <div v-if="blogPosts.length">
+            <label>
+              Sort Title:
+              <select v-model="title" @change="sortTitle(title)">
+                  <option value="">All</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+            </label>
+
             <div class="blog-card" v-for="blogPost in blogPosts" :key="blogPost._id">
               <div class="meta">
                 <div class="photo">
@@ -50,14 +59,33 @@ export default {
   components: {Navbar},
   data() {
         return {
-            blogPosts: []
+            blogPosts: [],
+            filteredBlogs: null,
+            title: ""
         }
     },
     mounted() {
         fetch("https://ndiphiwe-captone-project.herokuapp.com/blogs")
         .then(res => res.json())
-        .then(data => this.blogPosts = data)
+        .then((data) => {
+          this.blogPosts = data;
+          this.filteredBlogs = data;
+          })
         .catch(err => console.log(err.message))
+    },
+    methods: {
+      sortTitle(dir) {
+        this.filteredBlogs = this.filteredBlogs.sort((a, b) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+        if (dir == "desc") this.filteredBlogs.reverse();
+      },
     },
     
 }

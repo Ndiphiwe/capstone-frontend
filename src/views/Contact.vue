@@ -78,7 +78,32 @@ import Navbar from '../components/Navbar.vue'
 
 export default {
   name: 'Home',
-  components: {Navbar}
+  components: {Navbar},
+
+  methods: {
+    handleSubmit() {
+      console.log(this.name, this.email, this.subject, this.message);
+      let contact = {
+        name: this.name,
+        message: this.message,
+        email: this.email,
+        subject: this.subject,
+      };
+      console.log(contact);
+      fetch("https://blogs-lilly.herokuapp.com/contacts", {
+        method: "POST",
+        //   mode: 'no-cors',
+        body: JSON.stringify(),
+
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => alert(json.msg))
+        .catch((e) => alert(e.msg));
+    },
+  },
 }
 </script>
 
