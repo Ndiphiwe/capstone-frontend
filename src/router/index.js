@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import BlogPosts from '../views/BlogPosts.vue'
-import BlogsCart from '../views/BlogCrud.vue'
+import BlogsAdmin from '../views/BlogCrud.vue'
 import PostDetails from '../views/BlogPostDits.vue'
 // import BlogCart from '../views/BlogsCrud.vue'
 import CreateBlog from '../views/CreateBlog.vue'
@@ -28,9 +28,9 @@ const routes = [
     component: BlogPosts
   },
   {
-    path: '/blog-cart',
-    name: 'Blog-cart',
-    component: BlogsCart
+    path: '/blog-admin',
+    name: 'Blog-admin',
+    component: BlogsAdmin
   },
   {
     path: '/blogs/:id',

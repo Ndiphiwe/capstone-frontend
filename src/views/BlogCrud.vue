@@ -1,9 +1,11 @@
 <template>
+<div id="body">
   <div class="adminBox">
 	  <h1 class="headingA">Admin Board</h1>
 	  <hr>
      <div class="container">
 		 <h3 class="headingA">Blog Posts</h3>
+			  <div v-if="postsCart.length">
 		 <div class="row row-cols-1 row-cols-md-3 g-4">
 				<div class="card pt-3"  v-for='postCart of postsCart' :key="postCart._id">
 				<div class="card-footer">
@@ -31,10 +33,15 @@
 				</div>
 			</div>
 			</div>
+			  </div>
+			  <div v-else class="loader">
+				<p><i class='bx bx-loader bx-sm bx-spin' style="color: #fd1c1c;"></i>  Loading Admin Posts Crud...</p>
+				</div>
   		</div>
 		  <hr>
 		  <div class="container">
 			  <h3 class="headingA">Users</h3>
+			  <div v-if="users.length">
 			  <div class="row row-cols-1 row-cols-md-3 g-4">
 				<div class="card pt-3"  v-for='user of users' :key="user._id">
 				<div class="card-footer">
@@ -58,7 +65,12 @@
 				</div>
 			</div>
 			</div>
+			  </div>
+			  <div v-else class="loader">
+				<p><i class='bx bx-loader bx-sm bx-spin' style="color: #fd1c1c;"></i>  Loading Admin Users Crud...</p>
+			</div>
 		  </div>
+	</div>
 	</div>
 </template>
 
@@ -105,6 +117,7 @@ export default {
         })
         .catch((err) => {
           alert("User not logged in");
+		  this.$router.push({ name: "LogIn" });
         });
     } else {
       alert("User not logged in");
@@ -251,12 +264,32 @@ export default {
 	color: #000;
 }
 .adminBox{
-	margin-top: 5vh;
-	margin-bottom: 5vh;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
 }
 .headingA{
 	margin-top: 1rem;
 	margin-bottom: 2rem;
 }
 
+
+
+
+#body {
+    background: linear-gradient(-45deg, #f73a3a, #e6e6e6, #b8a4ab, #5c8083);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 </style>
