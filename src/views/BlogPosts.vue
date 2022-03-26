@@ -6,7 +6,7 @@
 
           <div v-if="blogPosts.length">
             <label>
-              Sort Title:
+              Sort by Title:
               <select v-model="title" @change="sortTitle(title)">
                   <option value="">All</option>
                 <option value="asc">Ascending</option>
@@ -93,7 +93,7 @@ export default {
 
 <style scoped>
   .about{
-    height: 100%;
+    height:   100%;
   }
   .about h1{
     font: 300 60px 'Oswald', sans-serif;
@@ -102,6 +102,9 @@ export default {
     padding-bottom: 10vh;
   }
 .loader{
+  color: #fff;
+}
+.container label{
   color: #fff;
 }
 
@@ -239,7 +242,7 @@ export default {
 .blog-card .description .read-more a:hover:after {
   margin-left: 5px;
   opacity: 1;
-}
+}container
 .blog-card p {
   position: relative;
   margin: 1rem 0 0;
