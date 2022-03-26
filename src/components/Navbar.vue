@@ -8,6 +8,7 @@
     <router-link :to="{name: 'SignUp'}">Sign Up</router-link> 
     <router-link :to="{name: 'LogIn'}">Log In</router-link> 
     <router-link @click="logout" :to="{name: 'Home'}">Log Out</router-link> 
+    <router-link :to="{name: 'Blog-admin'}">Admin</router-link>
     <router-link :to="{name: 'Contact'}">Contact</router-link>
   <a href="javascript:void(0);" class="icon" @click="myFunction">
     <i class='bx bx-menu bx-lg' style='color:#ffffff'></i>
